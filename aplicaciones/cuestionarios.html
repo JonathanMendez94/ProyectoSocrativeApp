@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Cuestionarios</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -14,11 +14,15 @@
 	<div id="main" class="container">
 	<nav class="nav nav-pills nav-fill">
       <a class="nav-item nav-link active" href="cuestionarios.html">cuestionario</a>
-      <a class="nav-item nav-link" href="#">Link</a>
-      <a class="nav-item nav-link" href="#">Link</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+      <a href="cuestionarios.html"> <button type="button" class="btn btn-primary" @click="">Guardar Cuestionario</button></a>
     </nav>
-
+	
+	<div class="col-md-12">
+  		<h3>Ingrese el Id del Cuestionario</h3>
+  	</div>
+  	<br>
+		<input type="text" class="form-control" placeholder="Ingrese Id" v-model="linkCuestionario">
+	<br>
     
   <div class="row">
   	<div class="col-md-12">
@@ -101,7 +105,10 @@
   </div>
 </div>
 	
+	<h2>  text : {{JSONobj}}</h2>
+	
+
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script><!--trabajar ultima version vue-->
     <script src="v.js"></script>
 </body>
-</html> 
+</html>
