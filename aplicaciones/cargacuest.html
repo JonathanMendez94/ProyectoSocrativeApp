@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CARGA DE CUESTIONARIO</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css.css">
+
+</head>
+<body>
+	<h1 style="text-align: center; padding-top: 0.5em; padding-bottom: 0.5em;"><span style="color: orange">My</span> <span style="color: red">Socrative</span></h1>
+
+	<h1 style=" padding-left: 1em; padding-top: 0.5em; padding-bottom: 0.5em;"><span style="color: orange">Estas <span style="color: blue">Listo</span>  <span style="color: red">?</span></h1>
+	<div id="main" class="container">
+	
+    
+  <div class="row">
+  	
+    <div class="col-sm" id="multiopcion">
+      	<form>
+		 
+		  <button type="button" class="btn btn-primary" @click="opcionMultiple">INICIAR CUESTIONARIO</button>
+		</form>
+    </div>
+   
+  
+ 
+    
+  </div>
+  <h2>   {{JSONobj}}</h2>
+
+    <li v-for="item in JSONobj">{{ item.tipo }}</li>
+  </ul>
+	<div v-for="item in JSONobj">
+
+		<div v-if="item.tipo==='1'">
+			
+
+			<form>
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">
+		    	<span style="color: blue">Pregunta.- </span ><span style="color: red">¿</span>{{ item.preguntass }} <span style="color: red">?</span>   </label>
+		    <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="ingrese su respuesta" v-model="pregunta">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Opciones</label>
+		  <br>
+
+			<select >
+  <option  v-for="i in item.opciones">{{ i }}</option>
+ 
+</select>
+		  </div>
+		 
+		  <button type="button" class="btn btn-primary" @click="opcionMultiple">guardar</button>
+		</form>
+			
+		</div>
+		<br>
+		<div v-if="item.tipo==='2'">
+
+
+			<form>
+				<div class="form-group">
+		    <label  for="exampleInputEmail1">
+		    	<span   style="color: blue">Pregunta.- </span ><span style="color: red">¿</span>{{ item.preguntass }} <span style="color: red">?</span>   </label>
+		    
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Respuestas</label>
+
+		    <div class="radio">
+				<label><input type="radio" name="optradio" v-model="respuestacorrecta" value="true">Verdadero</label>
+			</div>
+			<div class="radio">
+			 <label><input type="radio" name="optradio" v-model="respuestacorrecta" value="false">Falso</label>
+			</div>
+
+		    </div>
+			</form>
+			
+		</div>
+
+
+		<br>
+		<div v-if="item.tipo==='3'">
+
+
+			<form>
+		  <div class="form-group">
+		   <label for="exampleInputEmail1">
+		    	<span style="color: blue">Pregunta.- </span ><span style="color: red">¿</span>{{ item.preguntass }} <span style="color: red">?</span>   </label>
+		   
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Respuesta</label>
+			
+			<input type="text" class="form-control" placeholder="Ingrese Respuesta" v-model="respuestacorrecta">
+		    <br>
+		    
+		 </div>
+		</form>
+			
+		
+
+		 <button type="button" class="btn btn-primary" @click="respuestaCorta">ENVIAR TODO</button>
+	</div>
+
+
+
+	
+</div>
+
+
+	
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script><!--trabajar ultima version vue-->
+    <script src="v (copia).js"></script>
+</body>
+</html>

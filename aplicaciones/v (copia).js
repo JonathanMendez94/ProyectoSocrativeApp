@@ -17,27 +17,26 @@ var demo = new Vue({
         JSONobj:{},
         quiz:[]
     },
+    data1: {
+        
+        pregunta: "",
+        respuesta1:"",
+        
+        quiz1:[]
+    },
 
     // Functions we will be using.
     methods: {
         makeActive: function(item){
-            // When a model is changed, the view will be automatically updated.
+
+
             this.active = item;
-            /*if (item=='1111111') {
-                active: 'home'
-            }*/
         },
         opcionMultiple: function(){
             this.quiz.push({
-                tipo:'1',
+                
                 linkCuestionario: this.linkCuestionario,
-                preguntass: this.pregunta,
-                opciones:{
-                    o1: this.respuesta1,
-                    o2: this.respuesta2,
-                    o3: this.respuesta3,
-                },
-                correcta: this.respuestacorrecta
+               
             });
             this.connect();
             console.log(this.quiz);
@@ -45,7 +44,6 @@ var demo = new Vue({
         VoF: function(){
           this.quiz.push({
             tipo:'2',
-            linkCuestionario: this.linkCuestionario,
             preguntass:this.pregunta,
             correcta:this.respuestacorrecta
           });
@@ -54,18 +52,28 @@ var demo = new Vue({
 
         },
         respuestaCorta: function(){
-          this.quiz.push({
-            tipo:'3',
-            linkCuestionario: this.linkCuestionario,
-            preguntass:this.pregunta,
-            correcta:this.respuestacorrecta
+
+         this.quiz.push({
+            
+            preguntass:"",
+            correcta:"this.JSONobj.respuestacorrecta",
           });
           this.connect();
-          console.log(this.quiz);
+
+          
+          console.log(this.JSONobj.length);
+                      console.log(this.JSONobj);
+                      console.log(this.JSONobj.tipo);
+          
+
+        
+
+         
+
         },
                 //metodos de conexion a WebSocket
         connect() {
-              socket = new WebSocket("ws://localhost:4567/profesor");
+              socket = new WebSocket("ws://localhost:4567/estudiante");
               socket.onopen = this.openWs;
               socket.onerror = this.errorWs;
               socket.onmessage = this.messageWs;
@@ -84,6 +92,7 @@ var demo = new Vue({
               this.JSONobj=JSON.parse(jvs);
               console.log(this.JSONobj);
         },
+
         sendMessage(msgData) {
               json = JSON.stringify(msgData);
               socket.send(json);
@@ -91,4 +100,9 @@ var demo = new Vue({
             
     }
             
+});
+
+var a = new Vue({
+
+
 });
